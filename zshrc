@@ -24,7 +24,7 @@ ZSH_THEME="binarymuse"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump brew bundler cap npm osx rails3 ruby rvm textmate completion)
+plugins=(git autojump brew cap npm osx rails3 ruby rvm textmate completion)
 
 source $ZSH/oh-my-zsh.sh
 
