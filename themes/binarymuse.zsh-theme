@@ -18,7 +18,14 @@ PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$
 export EDITOR=vim
 export LESS='-iRX'
 
+export PATH="/usr/local/bin:$PATH"
 export PATH="/Users/btilley/bin:$PATH"
+export PATH="/Users/btilley/src/install/go/go/bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
+export GOROOT="/Users/btilley/src/install/go/go"
+# export GOPATH="/Users/btilley/src/install/go/gopath:$GOROOT"
+# export GOARCH=amd64
+# export GOOS=darwin
 
 [[ -s "/Users/btilley/.rvm/scripts/rvm" ]] && source "/Users/btilley/.rvm/scripts/rvm"
 [[ -s "/Users/btilley/.nvm/nvm.sh" ]] && source "/Users/btilley/.nvm/nvm.sh"
