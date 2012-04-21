@@ -39,3 +39,5 @@ alias bx="bundle exec"
 alias s="git status"
 alias d="git diff"
 alias ds="git diff --staged"
+
+fortune
