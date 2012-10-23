@@ -29,6 +29,7 @@ export GOROOT="/Users/btilley/src/install/go/go"
 # export GOOS=darwin
 
 [[ -s "/Users/btilley/.rvm/scripts/rvm" ]] && source "/Users/btilley/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "/Users/btilley/.nvm/nvm.sh" ]] && source "/Users/btilley/.nvm/nvm.sh"
 
 setopt hist_ignore_space
