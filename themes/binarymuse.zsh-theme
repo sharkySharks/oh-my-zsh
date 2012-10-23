@@ -22,6 +22,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/Users/btilley/bin:$PATH"
 export PATH="/Users/btilley/src/install/go/go/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
+export PATH="/Users/btilley/vert.x/bin:$PATH"
 export GOROOT="/Users/btilley/src/install/go/go"
 # export GOPATH="/Users/btilley/src/install/go/gopath:$GOROOT"
 # export GOARCH=amd64
