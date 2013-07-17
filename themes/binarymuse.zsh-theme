@@ -35,6 +35,10 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 setopt hist_ignore_space
 setopt hist_no_store
 
+setopt autocd
+setopt auto_pushd
+setopt pushd_ignore_dups
+
 alias ll="ls -lAh"
 alias bx="bundle exec"
 #alias rake="bundle exec rake"
@@ -42,5 +46,10 @@ alias s="git status"
 alias d="git diff"
 alias ds="git diff --staged"
 unsetopt correct_all
+
+function chpwd() {
+  emulate -LR zsh
+  ls -lAh
+}
 
 fortune
