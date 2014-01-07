@@ -32,3 +32,6 @@ source $ZSH/oh-my-zsh.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+__git_files () {
+      _wanted files expl 'local files' _files  }
