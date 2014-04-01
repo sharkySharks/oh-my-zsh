@@ -13,7 +13,23 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 # RPROMPT='${return_status}%{$reset_color%}'
 
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info) '
+ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="("
+ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX=")"
+
+function virtualenv_prompt_info() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        if [ -f "$VIRTUAL_ENV/__name__" ]; then
+            local name=`cat $VIRTUAL_ENV/__name__`
+        elif [ `basename $VIRTUAL_ENV` = "__" ]; then
+            local name=$(basename $(dirname $VIRTUAL_ENV))
+        else
+            local name=$(basename $VIRTUAL_ENV)
+        fi
+        echo " $ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX$name$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX"
+    fi
+}
+
+PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(virtualenv_prompt_info)$(git_prompt_info) '
 
 export EDITOR=vim
 export LESS='-iRX'
@@ -47,9 +63,23 @@ alias d="git diff"
 alias ds="git diff --staged"
 unsetopt correct_all
 
-function chpwd() {
-  emulate -LR zsh
-  ls -lAh
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+export VIRTUAL_ENV_DISABLE_PROMPT="true"
+export WORKON_HOME=$HOME/.virtualenvs
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+function auto_virtualenv() {
+  if [ -e .venv ]; then
+    workon `cat .venv`
+  fi
 }
+
+function chpwd() {
+  auto_virtualenv
+}
+
+auto_virtualenv
 
 fortune
